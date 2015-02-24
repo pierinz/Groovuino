@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 
 int funcbut[8] ;
 int funcLED[8] ;

@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 
 const int chipSelect = 10;         // For Due, the SS of SD Card is on pin 10. See SdFat library
 const int bufsize = 1024;          // buffer size in bytes. You can change this data.

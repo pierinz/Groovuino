@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 
 #define SAMPLE_LFO_RATE 500.0 
 #define SAMPLES_LFO_PER_CYCLE 600 

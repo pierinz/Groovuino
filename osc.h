@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 #include <tables.h>
 
 // Change this to change the number of oscillators per voice
