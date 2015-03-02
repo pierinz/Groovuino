@@ -1,11 +1,19 @@
 #include <Arduino.h>
 #include <tables.h>
 
+//Make sure we include this only once
+#ifndef GROOVUINO_OSC
+#define GROOVUINO_OSC
+
 // Change this to change the number of oscillators per voice
-#define NUM_OSC 1 
+#ifndef NUM_OSC
+#define NUM_OSC 1
+#endif
 
 // Can adjust the Sample rate
+#ifndef SAMPLE_RATE
 #define SAMPLE_RATE 44100.0 
+#endif
 
 // Number of samples played in one cycle (a cycle depends on the frequency of the note played)
 #define SAMPLES_PER_CYCLE 600 
@@ -22,7 +30,7 @@ public:
    int32_t volglb;                               // Volume global
    int32_t volglbsave;                           // Volume global temporary save  
    uint16_t waveform[NUM_OSC];                    // Waveform of each oscillator 
-   int32_t volosc[NUM_OSC];                      // Volume of each oscillator
+   int32_t volosc[NUM_OSC];                      // Volume of each oscillator (0-512)
    float fine[NUM_OSC];                           // Fine of each oscillator
    uint32_t ulPhaseAccumulator[NUM_OSC];          // Position in the reading of each oscillator table 
    volatile uint32_t ulPhaseIncrement[NUM_OSC] ;  // Reading speed of each oscillaotr table 
@@ -132,7 +140,7 @@ public:
      if(note==noteplaying) play = false;
    }
 
-// Set the volume of one oscillator
+// Set the volume of one oscillator (0-1024). The value will be scaled to 0-512.
    void setVolOsc(uint8_t num, int32_t vol)
    {
      volosc[num] = vol>>1;
@@ -201,3 +209,4 @@ public:
    }
    
 };
+#endif
